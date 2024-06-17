@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="userInput_box">
+    <h1>{{ isSignUpEnabled ? "Sign up" : "Sign in" }}</h1>
+    <form>
+      <div class="input-group">
+        <div class="input-field" *ngIf="isSignUpEnabled">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" placeholder="Enter your name" />
+        </div>
+        <div class="input-field">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" placeholder="Enter your email" />
+        </div>
+        <div class="input-field">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Enter your password" />
+        </div>
+        <div class="input-field">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Enter your confirm password" />
+        </div>
+      </div>
+      <div class="actionButton">
+        <button type="button" [ngClass]="isSignUpEnabled ? 'disabled' : ''" (click)="isSignUpEnabled = !isSignUpEnabled">
+          Sign up
+        </button>
+        <button
+          type="button"
+          [ngClass]="!isSignUpEnabled ? 'disabled' : ''"
+          (click)="isSignUpEnabled = !isSignUpEnabled"
+        >
+          Sign in
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

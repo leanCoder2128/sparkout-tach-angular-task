@@ -14,4 +14,5 @@ import { AppCommonModule } from '../../shared/app-common.module';
   ],
   exports: [],
 })
-export class AccountModule {}
+export class AccountModule {
+}

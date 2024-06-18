@@ -1,0 +1,10 @@
+{
+    "product": [
+        {
+            "pName": "iphone",
+            "price": "45,000.00",
+            "brand": "Apple",
+            "image": ""
+        }
+    ]
+}

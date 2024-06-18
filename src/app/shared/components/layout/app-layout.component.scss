@@ -1,0 +1,32 @@
+.header{
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content{
+  padding: 24px;
+}
+
+
+
+.footer{
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  background-color: #26C6DA;
+  color: white;
+}
+
+mat-toolbar{
+  position: relative;
+  z-index: 5;
+}
+
+mat-sidenav ,
+mat-sidenav-content{
+  transition: all 500ms ease-in-out;
+}
+
+

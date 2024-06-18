@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -10,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class LoginComponent implements OnInit{
     isSignUpEnabled = true;
     loginForm: FormGroup;
-    constructor(private fb : FormBuilder){
+    constructor(private fb : FormBuilder, private route : Router){
         this.loginForm = this.fb.group({
             email : [null, [Validators.required , Validators.email]],
             password : [null, Validators.required]
@@ -19,14 +20,12 @@ export class LoginComponent implements OnInit{
 
 
     ngOnInit(): void {
-        
     }
 
     onSubmit(): void {
-        if (this.loginForm.invalid) {
-          return;
-        }
-        // Call API to login
-        console.log('Login successful!');
+        // if (this.loginForm.invalid) {
+        //   return;
+        // }
+        this.route.navigateByUrl('/products')
       }
 }

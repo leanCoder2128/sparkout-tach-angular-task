@@ -19,6 +19,10 @@
           <i class="fa-solid fa-lock"></i>
           <input type="password" placeholder="Enter your confirm password" />
         </div>
+
+        <div class="actionButton" >
+          <button mat-raised-button type="submit"  color="primary" (click)="onSubmit()">{{isSignUpEnabled ? "Register" : 'Login'}} </button>
+        </div>
       </div>
       <div class="actionButton">
         <button type="button" [ngClass]="isSignUpEnabled ? 'disabled' : ''" (click)="isSignUpEnabled = !isSignUpEnabled">
@@ -35,3 +39,4 @@
     </form>
   </div>
 </div>
+

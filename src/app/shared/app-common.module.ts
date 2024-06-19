@@ -8,8 +8,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CartDialogComponent } from '../modules/Dialog/cart/cart.dialog.component';
+import { MatSliderModule } from '@angular/material/slider';
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    CartDialogComponent
+  ],
   imports: [
     ReactiveFormsModule,
     CommonModule,
@@ -19,7 +26,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatSliderModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -30,7 +40,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatSliderModule
   ],
 })
 export class AppCommonModule {}

@@ -1,17 +1,86 @@
-
 <div class="product_list_page">
-    <div class="filter_area">
-        <mat-form-field>
-            <mat-label>Toppings</mat-label>
-            <mat-select  multiple>
-              <!-- <mat-select-trigger>
-                {{toppings.value?.[0] || ''}}
-                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                </span>
-              </mat-select-trigger> -->
-              <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+  <div class="filter_area">
+    <form [formGroup]="filterForm">
+      <div>
+        <div class="inputs">
+          <mat-form-field appearance="outline">
+            <mat-label>SORT BY</mat-label>
+            <mat-select
+              formControlName="filterBy"
+              (ngModelChange)="getRelatedSearch()"
+            >
+              <mat-option
+                [value]="filter.id"
+                *ngFor="let filter of filterOptionList"
+                >{{ filter.option }}</mat-option
+              >
             </mat-select>
           </mat-form-field>
+          <div class="col-md-5 my-auto">
+            <div class="input-group">
+              <input
+                type="search"
+                placeholder="Search your product"
+                class="form-control searbox"
+              />
+              <button class="btn searbox" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="related_chip">
+            <!-- <mat-slider
+            class="example-margin"
+            [min]="minPrice"
+            [max]="maxPrice"
+            [step]="1000"
+            thumbLabel
+            formControlName="price"
+          ></mat-slider> -->
+          <mat-slider class="searbox" min="1000" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+            <input matSliderThumb (change)="formatLabel(1000)">
+          </mat-slider>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="related_chip" *ngIf="this.filterForm.get('filterBy')?.value">
+    <span> Related </span>
+    <div class="chip_set">
+      <mat-chip>{{ this.filterForm.get("realtedTo")?.value }}</mat-chip>
     </div>
+  </div>
+
+  <div class="py-3 py-md-5 bg-light">
+    <div class="prod-container">
+      <div class="row">
+        <ng-container *ngFor="let product of filteredCartList">
+          <div class="col-md-2">
+            <div class="product-card">
+              <div class="product-card-img">
+                <img [src]="product.image" />
+              </div>
+              <div class="product-card-body">
+                <p class="product-brand_name">{{ product.brand }}</p>
+                <h5 class="product_name">{{ product.pName }}</h5>
+
+                <div>
+                  <span class="selling-price">{{ product.price }}</span>
+                  <h6>{{ product.desc }}</h6>
+                </div>
+                <div class="mt-2">
+                  <div class="btn btn1">View</div>
+                  <div class="btn btn1" (click)="addToCart(product)">
+                    <span><i class="fa fa-heart"></i></span>&nbsp;Add
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </div>

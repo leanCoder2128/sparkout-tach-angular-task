@@ -1,10 +1,94 @@
 {
-    "product": [
-        {
-            "pName": "iphone",
-            "price": "45,000.00",
-            "brand": "Apple",
-            "image": ""
-        }
-    ]
+  "filterOptions": [
+    {
+      "id": 1,
+      "option": "popularity"
+    },
+    {
+      "id": 2,
+      "option": "Price"
+    },
+    {
+      "id": 3,
+      "option": "offers"
+    }
+  ],
+  "product": [
+    {
+      "pName": "iphone",
+      "price": "45,000.00",
+      "desc": "mobile phone",
+      "brand": "Apple",
+      "qty": 1,
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-mini-r1.jpg",
+      "discount": 10
+    },
+    {
+      "pName": "Mens Cotton Jacket",
+      "price": "18,000.00",
+      "brand": "Tommy Hillfigure",
+      "desc": "Jackets for Spring /Autumn/Winter",
+      "qty": 1,
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "discount": 15
+    },
+    {
+      "pName": "Mens Casual Premium Slim Fit T-Shirts",
+      "price": "700.00",
+      "brand": "Allen solly",
+      "desc": "Slim-fitting style, long sleeve",
+      "qty": 1,
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "discount": 5
+    },
+    {
+      "pName": "SSD PLUS 1TB Internal SSD",
+      "price": "10,000.00",
+      "brand": "SanDisk",
+      "desc": "host device, OS and application",
+      "qty": 1,
+      "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
+      "discount": 20
+    },
+    {
+      "pName": "BIYLACLESEN",
+      "price": "15,000.00",
+      "brand": "women's clothing",
+      "desc": "BIYLACLESEN Women's 3-in-1",
+      "qty": 1,
+      "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+      "discount": 25
+    },
+    {
+      "pName": "95%Cotton,5%Spandex",
+      "price": "8,000.00",
+      "brand": "Hey! clothing",
+      "desc": "DANVOUY Womens T Shirt",
+      "qty": 1,
+      "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+      "discount": 30
+    }
+  ],
+  "myCart": [
+    {
+      "id": "d290",
+      "pName": "95%Cotton,5%Spandex",
+      "price": "8,000.00",
+      "brand": "Hey! clothing",
+      "desc": "DANVOUY Womens T Shirt",
+      "qty": 1,
+      "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+      "discount": 30
+    },
+    {
+      "id": "3878",
+      "pName": "iphone",
+      "price": "45,000.00",
+      "desc": "mobile phone",
+      "brand": "Apple",
+      "qty": 3,
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-mini-r1.jpg",
+      "discount": 10
+    }
+  ]
 }

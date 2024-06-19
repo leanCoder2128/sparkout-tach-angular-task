@@ -76,10 +76,52 @@
 
     .inputs{
         display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px; 
     }
 
     .searbox{
         margin-left: 5px;
         margin-top: -20px;
     }
+
+    .searchbar{
+        width: 100%;
+    }
+
+    
 }
+
+.product-image {
+    max-height: 150px; 
+    width: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+
+  .rating-container {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+  
+  .fa-star {
+    font-size: 18px;
+    color: #FFD700; /* Color for filled stars */
+  }
+  
+  .fas.fa-star.star-filled {
+    color: #FFD700;
+  }
+  
+  .far.fa-star.star-empty {
+    color: #ccc;
+  }
+  
+  .rating-value {
+    margin-left: 8px;
+    font-size: 14px;
+  }
+

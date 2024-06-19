@@ -7,16 +7,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatSelectModule} from '@angular/material/select';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CartDialogComponent } from '../modules/Dialog/cart/cart.dialog.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [
-    CartDialogComponent
-  ],
+  declarations: [CartDialogComponent],
   imports: [
     ReactiveFormsModule,
     CommonModule,
@@ -29,7 +33,13 @@ import { MatSliderModule } from '@angular/material/slider';
     MatSelectModule,
     MatChipsModule,
     MatDialogModule,
-    MatSliderModule
+    MatSliderModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule,
+    MatCardModule,
+    FlexLayoutModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -43,7 +53,13 @@ import { MatSliderModule } from '@angular/material/slider';
     MatSelectModule,
     MatChipsModule,
     MatDialogModule,
-    MatSliderModule
+    MatSliderModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule,
+    MatCardModule,
+    FlexLayoutModule
   ],
 })
 export class AppCommonModule {}

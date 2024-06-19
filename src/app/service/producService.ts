@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Product } from "../model";
 
 @Injectable()
 export class ProductService{
@@ -13,10 +14,10 @@ export class ProductService{
     }
 
     getProductDetail(){
-       return this.http.get<any[]>(this.apiURL + 'product');
+       return this.http.get<Product[]>(this.apiURL + 'product');
     }
 
-    addItemToMyCart(myCartPayload : any){
-        return this.http.post<any>(this.apiURL + 'myCart' , myCartPayload);
+    addItemToMyCart(myCartPayload : Product){
+        return this.http.post<Product>(this.apiURL + 'myCart' , myCartPayload);
     }
 }

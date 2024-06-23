@@ -1,42 +1,56 @@
-<div class="container">
+<div class="container_login">
   <div class="userInput_box">
     <h1>{{ isSignUpEnabled ? "Sign up" : "Sign in" }}</h1>
-    <form>
+    <form [formGroup]="loginForm">
       <div class="input-group">
         <div class="input-field" *ngIf="isSignUpEnabled">
           <i class="fa-solid fa-user"></i>
-          <input type="text" placeholder="Enter your name" />
+          <input type="text" placeholder="Enter your name" formControlName="userName"/>
+          
         </div>
         <div class="input-field">
           <i class="fa-solid fa-envelope"></i>
-          <input type="email" placeholder="Enter your email" />
+          <input type="email" placeholder="Enter your email" formControlName="email"/>
         </div>
         <div class="input-field">
           <i class="fa-solid fa-lock"></i>
-          <input type="password" placeholder="Enter your password" />
+          <input type="password" placeholder="Enter your password" formControlName="password"/>
         </div>
-        <div class="input-field">
+      
+        <div class="input-field" *ngIf="isSignUpEnabled">
           <i class="fa-solid fa-lock"></i>
-          <input type="password" placeholder="Enter your confirm password" />
-        </div>
-
-        <div class="actionButton" >
-          <button mat-raised-button type="submit"  color="primary" (click)="onSubmit()">{{isSignUpEnabled ? "Register" : 'Login'}} </button>
+          <input type="password" placeholder="Enter your confirm password" formControlName="confirmPassword"/>
         </div>
       </div>
-      <div class="actionButton">
-        <button type="button" [ngClass]="isSignUpEnabled ? 'disabled' : ''" (click)="isSignUpEnabled = !isSignUpEnabled">
+      
+      
+    </form>
+  <div class="actionButton">
+        <button
+          type="button"
+          [disabled]="isSignUpEnabled"
+          [ngClass]="isSignUpEnabled ? 'disabled' : ''"
+          (click)="isSignUpEnabled = !isSignUpEnabled"
+        >
           Sign up
         </button>
         <button
           type="button"
+          [disabled]="!isSignUpEnabled"
           [ngClass]="!isSignUpEnabled ? 'disabled' : ''"
           (click)="isSignUpEnabled = !isSignUpEnabled"
         >
           Sign in
         </button>
+        <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        (click)="onSubmit()"
+      >
+        {{ isSignUpEnabled ? "Register" : "Login" }}
+      </button>
       </div>
-    </form>
   </div>
+  
 </div>
-

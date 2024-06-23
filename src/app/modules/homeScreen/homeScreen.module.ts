@@ -3,6 +3,7 @@ import { HomeScreenComponent } from "./homeScreen.component";
 import { AppCommonModule } from "../../shared/app-common.module";
 import { RouterModule, Routes } from "@angular/router";
 
+
 const homeScreenRoutes : Routes = [
     {
         path : '',
@@ -12,7 +13,7 @@ const homeScreenRoutes : Routes = [
 
 @NgModule({
     declarations: [HomeScreenComponent],
-    imports: [AppCommonModule, RouterModule.forChild(homeScreenRoutes)],
+    imports: [AppCommonModule, RouterModule.forChild(homeScreenRoutes) ],
     exports: []
 })
 export class HomeScreenModule {}

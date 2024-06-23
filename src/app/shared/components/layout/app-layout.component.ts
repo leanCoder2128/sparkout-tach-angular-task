@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { Router } from "@angular/router";
+import { UserDto } from "../../../model";
 import { CartDialogComponent } from "../../../modules/Dialog/cart/cart.dialog.component";
 
 @Component({
@@ -8,8 +10,13 @@ import { CartDialogComponent } from "../../../modules/Dialog/cart/cart.dialog.co
     styleUrl: './app-layout.component.scss'
 })
 export class AppLayoutComponent implements OnInit{
-
-    constructor(private dialog : MatDialog){}
+    userDetail : UserDto ;
+    constructor(private dialog : MatDialog, private router : Router){
+        const userDetail = sessionStorage.getItem('userDetail');
+        if(userDetail){
+          this.userDetail = JSON.parse(userDetail);
+        }
+    }
 
 
     ngOnInit(): void {
@@ -21,5 +28,10 @@ export class AppLayoutComponent implements OnInit{
             enterAnimationDuration,
             exitAnimationDuration,
           });
+    }
+
+    logot(){
+        sessionStorage.clear();
+        this.router.navigateByUrl('/login');
     }
 }

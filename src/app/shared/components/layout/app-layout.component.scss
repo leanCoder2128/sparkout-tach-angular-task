@@ -4,17 +4,13 @@
 }
 
 .page-content{
-  padding: 26px;
+  // padding: 26px;
   border-radius: 5px;
-overflow: hidden;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 
-
-.footer{
-  display: flex;
-  flex-direction: column;
-}
 
 h1{
   background-color: #26C6DA;

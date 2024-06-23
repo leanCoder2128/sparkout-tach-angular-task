@@ -9,3 +9,11 @@ export interface Product {
     id: string;
     rating : number
   }
+
+
+  export interface UserDto{
+    userName : string;
+    email : string;
+    password : string;
+    confirmPassword : string;
+  }

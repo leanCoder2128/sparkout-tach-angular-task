@@ -3,7 +3,7 @@
     <h4>
       My Cart &nbsp;<span><i class="fa fa-heart"></i></span>
     </h4>
-    <div class="row">
+    <div class="row" *ngIf="myCartList?.length > 0">
       <div class="col-md-12">
         <div class="shopping-cart">
           <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
@@ -64,7 +64,9 @@
                     </div>
                   </div>
                 </div>
-                
+                <div class="col-md-2 my-auto" style="cursor: pointer;">
+                  <i class="fa-solid fa-trash-can-arrow-up" (click)="removeItemFromMyCart(myItem.id)">&nbsp; Delete</i>
+                </div>
               </div>
             </div>
           </ng-container>
@@ -77,6 +79,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div  *ngIf="myCartList?.length === 0">
+      <p class="d-flex justify-content-center">Your cart is empty, Add an item to purchase &nbsp;<i class="fa-solid fa-cart-shopping"></i></p>
     </div>
   </div>
 </div>

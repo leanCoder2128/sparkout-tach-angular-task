@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppCommonModule } from './shared/app-common.module';
 import { ServiceModule } from './service/service.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +19,9 @@ import { ServiceModule } from './service/service.module';
     AppRoutingModule,
     AppCommonModule,
     SharedModule,
-    ServiceModule.forRoot()
+    NgxSpinnerModule.forRoot({ type: 'square-loader' }),
+    ServiceModule.forRoot(),
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

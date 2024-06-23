@@ -3,6 +3,7 @@ import { ModuleWithProviders, NgModule } from "@angular/core";
 import { ProductService } from "./producService";
 import { DropDownService } from "./dropDownOption.service";
 import { MyCartService } from "./myCart.service";
+import { AuthService } from "./auth.service";
 
 
 
@@ -15,6 +16,7 @@ export class ServiceModule{
         return {
             ngModule : ServiceModule,
             providers : [
+                AuthService,
                 ProductService,
                 DropDownService,
                 MyCartService

@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sparkoutTechEcomTask';
+
+  notificationOptions = {
+    timeOut: 1500,
+    showProgressBar: true,
+    pauseOnHover: true,
+    clickToClose: true,
+  };
 }

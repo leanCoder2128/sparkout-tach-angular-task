@@ -1,112 +1,136 @@
 <div class="product_list_page">
   <div class="filter_area">
     <form [formGroup]="filterForm">
-        <div class="inputs">
-            <mat-form-field appearance="outline" class="col-md-2">
-              <mat-label>SORT BY</mat-label>
-              <mat-select formControlName="filterBy" (ngModelChange)="getRelatedSearch()">
-                <mat-option [value]="filter.id" *ngFor="let filter of filterOptionList">{{ filter.option }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          
-            <div class="col-md-2 my-auto" style="margin-left: 22px" *ngIf="this.filterForm.get('filterBy')?.value === '2'">
-              <div class="row">
-                <label>Select Price</label>
-                <mat-slider class="example-margin" [disabled]="disabled" [max]="max" [min]="min" [discrete]="thumbLabel" [showTickMarks]="showTicks">
-                  <input matSliderThumb #slider (change)="filterByPrice(slider.value)" />
-                </mat-slider>
-                {{ slider.value }}
-              </div>
-            </div>
-          
-            <div class="col-5 my-auto" style="display: flex; justify-content: center">
-              <div style="width: 100%;">
-                <mat-form-field class="searchbar">
-                  <mat-label>Search By Product Name</mat-label>
-                  <input type="text" matInput formControlName="search" [matAutocomplete]="auto" (blur)="searchByProductName()"/>
-                  <mat-autocomplete #auto="matAutocomplete" >
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.pName" >
-                      {{ option.pName }}
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field>
-              </div>
-            </div>
+      <div class="inputs">
+        <mat-form-field appearance="outline" class="col-md-2 col-12">
+          <mat-label>SORT BY</mat-label>
+          <mat-select
+            formControlName="filterBy"
+            (ngModelChange)="getRelatedSearch()"
+          >
+            <mat-option
+              [value]="filter.id"
+              *ngFor="let filter of filterOptionList"
+              >{{ filter.option }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <div
+          class="col-md-2 col-12 my-auto"
+          style="margin-left: 22px"
+          *ngIf="this.filterForm.get('filterBy')?.value === '2'"
+        >
+          <div class="row">
+            <label>Select Price</label>
+            <mat-slider
+              class="example-margin"
+              [disabled]="disabled"
+              [max]="max"
+              [min]="min"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+            >
+              <input
+                matSliderThumb
+                #slider
+                (change)="filterByPrice(slider.value)"
+              />
+            </mat-slider>
+            {{ slider.value }}
+          </div>
         </div>
+
+        <div
+          class="col-12 col-md-4 my-auto"
+          style="display: flex; justify-content: center"
+        >
+          <div style="width: 100%">
+            <mat-form-field class="searchbar">
+              <mat-label>Search By Product Name</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="search"
+                [matAutocomplete]="auto"
+                (blur)="searchByProductName()"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option.pName"
+                >
+                  {{ option.pName }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-md-1 col-10 list_icon_layout">
+          <div class="list_layout_icon">
+            <div (click)="isStackedViewSelected = !isStackedViewSelected" [ngClass]="!isStackedViewSelected ? 'selected_box' : ''"><i class="fa-solid fa-list "></i></div>
+            <div [ngClass]="isStackedViewSelected ? 'selected_box' : ''" (click)="isStackedViewSelected = !isStackedViewSelected"><i class="fa-solid fa-grip-vertical"></i></div>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 
   <div class="related_chip" *ngIf="this.filterForm.get('filterBy')?.value">
     <span> Related </span>
     <div class="chip_set">
-      <mat-chip>{{ this.filterForm.get("realtedTo")?.value }}</mat-chip>
+      <mat-chip>{{ this.filterForm.get("realtedTo").value }}</mat-chip>
     </div>
   </div>
-  <div class="content">
-    <div fxLayout="row wrap" fxLayoutGap="5px grid">
-      <div  fxFlex="25%"
-      fxFlex.xs="100%"
-      fxFlex.sm="33%" *ngFor="let product of filteredCartList">
+  <div class="content" style="margin: 6px" >
+    <div
+     [ngClass]="isStackedViewSelected ? 'content_stacked' : 'content_table' "
+    >
+      <div [ngClass]="isStackedViewSelected ? 'looper_class' : 'table_looper_class'"
+       
+        *ngFor="let product of filteredCartList"
+      >
         <mat-card class="mat-elevation-z4 product-card">
           <mat-card-header>
             <mat-card-title>{{ product.brand }}</mat-card-title>
             <mat-card-subtitle>{{ product.pName }}</mat-card-subtitle>
           </mat-card-header>
-          <img class="product-image" mat-card-image [src]="product.image" alt="{{ product.pName }}" />
+          <img
+            class="product-image"
+            mat-card-image
+            [src]="product.image"
+            alt="{{ product.pName }}"
+          />
           <mat-card-content>
             <p class="selling-price">{{ product.price }}</p>
             <p>{{ product.desc }}</p>
+            <div class="star-rating">
+              <i
+                *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                class="fa"
+                [ngClass]="{
+                  'fa-star': product.rating >= i + 1,
+                  'fa-star-half-alt':
+                    product.rating > i && product.rating < i + 1,
+                  'fa-star-o': product.rating <= i
+                }"
+              >
+              </i>
+            </div>
           </mat-card-content>
-          <mat-card-actions>
+          <mat-card-actions style="justify-content: flex-end">
             <div class="mt-2">
-              <div class="btn btn1">View</div>
-              <div class="btn btn1" (click)="addToCart(product)">
-                <span><i class="fa fa-heart"></i></span>&nbsp;Add
+              <label class="btn btn1 offer-text_area"
+                >{{ product.discount }}&nbsp; % OFF</label
+              >
+              <div class="btn btn1 cart-btn" (click)="addToCart(product)">
+                <span><i class="fa fa-heart"></i></span>&nbsp;Add to cart
               </div>
             </div>
           </mat-card-actions>
-          <mat-card-footer>
-            <div class="rating-container">
-              <i class="far fa-star" *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index"
-                 [ngClass]="{'fas fa-star star-filled': i < product.rating, 'far fa-star star-empty': i >= product.rating}">
-              </i>
-              <span class="rating-value">{{ product.rating }}</span>
-            </div>
-          </mat-card-footer>
         </mat-card>
       </div>
     </div>
   </div>
-  
-  
-  <!-- <div class="py-3 py-md-5 bg-light">
-    <div class="prod-container">
-      <div class="row">
-        <ng-container *ngFor="let product of filteredCartList">
-          <div class="col-md-2">
-            <div class="product-card">
-              <div class="product-card-img">
-                <img [src]="product.image" />
-              </div>
-              <div class="product-card-body">
-                <p class="product-brand_name">{{ product.brand }}</p>
-                <h5 class="product_name">{{ product.pName }}</h5>
-
-                <div>
-                  <span class="selling-price">{{ product.price }}</span>
-                  <h6>{{ product.desc }}</h6>
-                </div>
-                <div class="mt-2">
-                  <div class="btn btn1">View</div>
-                  <div class="btn btn1" (click)="addToCart(product)">
-                    <span><i class="fa fa-heart"></i></span>&nbsp;Add
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-  </div> -->
 </div>

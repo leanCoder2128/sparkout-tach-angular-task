@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../service/producService';
-import { DropDownService } from '../../service/dropDownOption.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatSliderChange } from '@angular/material/slider';
 import { Observable, map, startWith } from 'rxjs';
 import { Product } from '../../model';
+import { DropDownService } from '../../service/dropDownOption.service';
+import { ProductService } from '../../service/producService';
 
 @Component({
   selector: 'app-homeScreen',
@@ -17,6 +16,8 @@ export class HomeScreenComponent implements OnInit {
   filterOptionList: any[] = [];
   filteredCartList: Product[] = [];
   filteredOptions: Observable<Product[]>;
+  isStackedViewSelected = true;
+
 
   max = 10000;
   min = 0;
@@ -35,6 +36,7 @@ export class HomeScreenComponent implements OnInit {
       realtedTo: [''],
       search: [''],
     });
+
   }
 
   ngOnInit(): void {
